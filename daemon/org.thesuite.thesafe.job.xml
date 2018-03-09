@@ -1,0 +1,33 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.thesuite.thesafe.job">
+    <property name="State" type="i" access="read"/>
+    <property name="Running" type="b" access="read"/>
+    <property name="Strategy" type="i" access="read"/>
+    <signal name="backupComplete">
+    </signal>
+    <signal name="backupError">
+      <arg name="description" type="s" direction="out"/>
+    </signal>
+    <signal name="changed">
+    </signal>
+    <signal name="progressUpdate">
+      <arg name="strategy" type="i" direction="out"/>
+      <arg name="progress" type="i" direction="out"/>
+    </signal>
+    <method name="state">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="running">
+      <arg type="b" direction="out"/>
+    </method>
+    <method name="progress">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="strategy">
+      <arg type="i" direction="out"/>
+    </method>
+    <method name="cancel">
+    </method>
+  </interface>
+</node>
