@@ -26,6 +26,14 @@ int main(int argc, char *argv[])
         QProcess::startDetached("thesafed");
     }
 
+    //Check if autostart file exists
+    QFile autostartFile(QDir::homePath() + "/.config/autostart/thesafed.desktop");
+    if (!autostartFile.exists()) {
+        autostartFile.open(QFile::WriteOnly);
+        autostartFile.write("[Desktop Entry]\nType=Application\nVersion=1.0\nName=theSafe Daemon\nExec=thesafed\nTryExec=thesafed\n");
+        autostartFile.close();
+    }
+
     MainWindow w;
     w.show();
 
