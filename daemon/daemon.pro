@@ -35,3 +35,9 @@ HEADERS += \
 DISTFILES += \
     org.thesuite.thesafe.xml \
     org.thesuite.thesafe.job.xml
+
+unix {
+    target.path = /usr/bin
+
+    INSTALLS += target
+}

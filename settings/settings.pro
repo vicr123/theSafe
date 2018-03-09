@@ -62,8 +62,14 @@ unix {
     translations.files = translations/*
     translations.path = /usr/share/thesafe/translations
 
-    desktop.files = theshell.desktop
+    desktop.files = thesafe.desktop
     desktop.path = /usr/share/applications/
 
     INSTALLS += target translations desktop
 }
+
+DISTFILES += \
+    thesafe.desktop
+
+RESOURCES += \
+    resources.qrc

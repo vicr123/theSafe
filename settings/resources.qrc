@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="thesafe">thesafe.svg</file>
+    </qresource>
+</RCC>

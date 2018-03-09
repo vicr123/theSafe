@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>theSafe</string>
   </property>
+  <property name="windowIcon">
+   <iconset theme="thesafe" resource="resources.qrc">
+    <normaloff>:/icons/thesafe</normaloff>:/icons/thesafe</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -1278,7 +1282,9 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>newStrategyCenter</sender>

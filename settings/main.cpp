@@ -2,6 +2,9 @@
 #include <QApplication>
 #include <QTranslator>
 #include <QLibraryInfo>
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QProcess>
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +21,10 @@ int main(int argc, char *argv[])
     QTranslator* translator = new QTranslator;
     translator->load(QLocale::system().name(), "/usr/share/thesafe/translations/");
     a.installTranslator(translator);
+
+    if (!QDBusConnection::sessionBus().interface()->registeredServiceNames().value().contains("org.thesuite.thesafe")) {
+        QProcess::startDetached("thesafed");
+    }
 
     MainWindow w;
     w.show();
