@@ -5,6 +5,7 @@
 #include <QTimer>
 #include <QSettings>
 #include <QDateTime>
+#include <climits>
 
 class ScheduleObject : public QObject {
         Q_OBJECT

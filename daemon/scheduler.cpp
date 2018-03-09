@@ -54,11 +54,16 @@ ScheduleObject::ScheduleObject(int strategy) {
         //Start the backup now
         daemon->startBackup(strategy);
     } else {
-        timer->setInterval(nextBackup.toMSecsSinceEpoch() - QDateTime::currentMSecsSinceEpoch());
+        if (nextBackup.toMSecsSinceEpoch() - QDateTime::currentMSecsSinceEpoch() > INT_MAX) {
+            timer->setInterval(INT_MAX);
+            connect(timer, SIGNAL(timeout()), daemon, SLOT(reloadSchedule()));
+        } else {
+            timer->setInterval(nextBackup.toMSecsSinceEpoch() - QDateTime::currentMSecsSinceEpoch());
+            connect(timer, &QTimer::timeout, [=] {
+                daemon->startBackup(strategy);
+            });
+        }
         timer->setSingleShot(true);
-        connect(timer, &QTimer::timeout, [=] {
-            daemon->startBackup(strategy);
-        });
         timer->start();
     }
 
